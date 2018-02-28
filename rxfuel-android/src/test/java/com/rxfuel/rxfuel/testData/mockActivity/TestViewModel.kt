@@ -6,7 +6,7 @@ import com.rxfuel.rxfuel.testData.mockProcessorModule.MockResult
 
 class TestViewModel : RxFuelViewModel<MockEvent, MockViewState>() {
 
-    override var idleState: MockViewState
+    override var initialState: MockViewState
         get() = MockViewState("idle state")
         set(value) {}
 
@@ -32,8 +32,8 @@ class TestViewModel : RxFuelViewModel<MockEvent, MockViewState>() {
         }
     }
 
-    override fun stateAfterNavigation(previousState: MockViewState): MockViewState {
-        return previousState.copy(navigate = null)
+    override fun stateAfterNavigation(navigationState: MockViewState): MockViewState {
+        return navigationState.copy(navigate = null)
     }
 
 }

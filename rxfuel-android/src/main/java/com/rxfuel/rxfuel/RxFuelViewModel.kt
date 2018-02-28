@@ -21,7 +21,7 @@ abstract class RxFuelViewModel<E : RxFuelEvent, VS : RxFuelViewState> : ViewMode
     /**
      * Idle state is rendered initially.
      */
-    abstract var idleState : VS
+    abstract var initialState : VS
 
     /**
      * Initial event is invoked upon ViewModel binding if not null.
@@ -79,7 +79,7 @@ abstract class RxFuelViewModel<E : RxFuelEvent, VS : RxFuelViewState> : ViewMode
     private fun compose(): Observable<VS> {
         return eventsSubject
                 .compose(eventsTransformer())
-                .scan(idleState, accumulator())
+                .scan(initialState, accumulator())
                 .compose(navigationReply())
                 .replay(1)
                 .autoConnect(0)
@@ -107,7 +107,7 @@ abstract class RxFuelViewModel<E : RxFuelEvent, VS : RxFuelViewState> : ViewMode
                 }
             }
 
-    abstract fun stateAfterNavigation(previousState: VS) : VS
+    abstract fun stateAfterNavigation(navigationState: VS) : VS
 
     private fun accumulator(): BiFunction<VS, Any, VS> = BiFunction {
         previousState: VS, event: Any -> viewStateGenerator(previousState, event)
