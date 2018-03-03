@@ -15,3 +15,8 @@ android:
 
 script:
     - ./gradlew test
+    
+licenses:
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
