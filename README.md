@@ -26,7 +26,7 @@ allprojects {
 
 Link : [https://rxfuel.github.io/docs](https://rxfuel.github.io/docs)
 
-## Architechure
+## Architecture
 
 > Data flow in an activity is uni-direction using a single Observable stream. Making it clean, easy to test and more reliable. UI elements are highly decoupled with business logic.
 
